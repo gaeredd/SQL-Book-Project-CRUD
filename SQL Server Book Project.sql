@@ -1,10 +1,6 @@
-/* use MIST353ClassRedd; "to ensure your using the correct database" */
-
 -- constraints CRUD create, retreive ,Update ,Delete--
 
---check for object statements--
 /* check constraint ChKprice (BookPrice) between (0.00 and 999.99)*/
-
 
 /*if (OBJECT_ID('LibraryBook') is not null)--syntax must be before drop book & library table--
 	drop table LibraryBook;*/
