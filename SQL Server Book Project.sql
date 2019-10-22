@@ -170,7 +170,7 @@ from BookCopy as BC
 where B.BookTitle = 'Harry Potter'; 
 
 --------------------------------------------------------------------------------
-
+	 --How many copies there are of each book--
 /*SELECT Customers.CustomerName, Orders.OrderID
 FROM Customers
 FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
@@ -190,9 +190,7 @@ group by B.ISBN;
 */
 
 
---1.Question to ask self why didnt the count work? --ebooks--
---2.Question to ask self why arent ebook format appearing
-
+--Attempt at --Resolving to 'Number of Copies'--
 select B.ISBN, B.BookTitle, B.BookFormat, L.LibraryName
 --count(BC.ISBN) as 'Number of Copies'
 from BookCopy as BC
@@ -203,19 +201,17 @@ from BookCopy as BC
 	 
 	 
 	 	 
--- Possible solution to question 1--
-/*SELECT  B.ISBN, B.BookTitle, L.LibraryName, BC.ISBN, count (BC.ISBN) as 'Number of copies'
+--Resolution to 'Number of Copies' general format--
+*SELECT  B.ISBN, B.BookTitle, L.LibraryName, BC.ISBN, count (BC.ISBN) as 'Number of copies'
 FROM BookCopy as BC
 	Left Join Book as B
 		ON B.ISBN = BC.ISBN
 	Left JOIN Library as L 
 	 on L.LibraryID = BC.LibraryID
 Group BY B.ISBN;
-*/
 
 
-
---Possible solution to question 1--
+--Resolution to 'Number of Copies'--
 select B.ISBN, B.BookTitle, B.BookFormat --LibraryName count(BC.ISBN) as 'Number of Copies'
 from BookCopy as BC
  inner join Book as B 
@@ -223,15 +219,14 @@ from BookCopy as BC
   inner join Library as L 
   on BC.LibraryID = L.LibraryID;
 
-  --Remeber to get every row from book and its number of copies--
+  --Remember to get every row from book and its number of copies--
   select B.ISBN, Book.BookTitle, B.BookFormat
 	from BookCopy as BC
 		inner join Book as B
 		 on BC.ISBN = B.ISBN
 		inner join Library as L;
 		
---Valid Solution to question 1--
-   
+
    select B.ISBN, B.BookTitle, B.BookFormat
 	from Book as B
 		Left join BookCopy as BC
@@ -239,7 +234,7 @@ from BookCopy as BC
 		Left join Library as L 
 			on BC.LibraryID = L.LibraryID;
 
--- Valid solution to question 2-- Gives all the libraries who orders dont match a Book --
+-- Gives all the libraries who orders dont match a Book --
 
 select B.ISBN, B.BookTitle, B.BookFormat, L.LibraryName
 --count(BC.ISBN) as 'Number of Copies'
