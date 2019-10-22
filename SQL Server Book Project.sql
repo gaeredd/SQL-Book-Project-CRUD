@@ -269,5 +269,28 @@ set @test = 12321456441646; int & bigint are only used for mathamatical equation
 */
 
 
+Create table LibraryBook
+(
+LibraryID int, 
+ISBN char(13), 
+constraint pkLibraryBook
+	primary key (LibraryID, ISBN),
+constraint fkLibraryBookToBook
+	foreign key(ISBN) references Book(ISBN),
+constraint fkLibraryBookToLibrary
+	foreign key(LibraryID) references Library(LibraryID)
 
+
+	insert into Library (LibraryName, LibraryAddress)
+	values
+	('downtown','100 newton ave'),
+	('evansdale','200 price st');
+
+	insert into Book (ISBN, BookPrice, BookTitle)
+	values
+	('1234567894561','14.99','Outsider')
+	('1326457485478','18.99','Zeus');
+
+);
+ 
 
